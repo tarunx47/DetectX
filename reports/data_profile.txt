@@ -1,0 +1,69 @@
+================================================================================
+                        DETECTX DATA PROFILE REPORT
+================================================================================
+File Path: C:\Users\shyam\DetectX\data\Synthetic_Financial_datasets_log.csv
+File Size: 470.67 MB (493,534,783 bytes)
+Total Rows: 6,362,620
+Total Columns: 11
+Processing Time: 19.08 s (Chunk size: 500,000)
+--------------------------------------------------------------------------------
+
+[1] SCHEMA & MISSING VALUE SUMMARY:
+Column Name          Data Type       Missing Count   Missing % 
+-----------------------------------------------------------------
+step                 int64           0               0.00      %
+type                 str             0               0.00      %
+amount               float64         0               0.00      %
+nameOrig             str             0               0.00      %
+oldbalanceOrg        float64         0               0.00      %
+newbalanceOrig       float64         0               0.00      %
+nameDest             str             0               0.00      %
+oldbalanceDest       float64         0               0.00      %
+newbalanceDest       float64         0               0.00      %
+isFraud              int64           0               0.00      %
+isFlaggedFraud       int64           0               0.00      %
+
+[2] TARGET VARIABLE ANALYSIS (isFraud):
+  - Non-Fraud (0): 6,354,407 (99.8709%)
+  - Fraud (1):     8,213 (0.1291%)
+  - Imbalance Ratio: ~773.7 : 1 (extreme class imbalance)
+
+[3] BUSINESS RULE FLAG ANALYSIS (isFlaggedFraud):
+  - Not Flagged (0): 6,362,604
+  - Flagged (1):     16 (0.00025%)
+  - Contingency (isFraud vs isFlaggedFraud):
+      * isFraud=0, isFlaggedFraud=0: 6,354,407
+      * isFraud=0, isFlaggedFraud=1: 0
+      * isFraud=1, isFlaggedFraud=0: 8,197 (Fraud missed by rule)
+      * isFraud=1, isFlaggedFraud=1: 16 (Fraud caught by rule)
+
+[4] TRANSACTION TYPE BREAKDOWN & FRAUD RATE:
+Type            Total Count     % of All Txns   Fraud Count     Fraud Rate %   
+---------------------------------------------------------------------------
+CASH_OUT        2,237,500       35.17          % 4,116           0.1840         %
+PAYMENT         2,151,495       33.81          % 0               0.0000         %
+CASH_IN         1,399,284       21.99          % 0               0.0000         %
+TRANSFER        532,909         8.38           % 4,097           0.7688         %
+DEBIT           41,432          0.65           % 0               0.0000         %
+
+[5] NUMERICAL FEATURE RANGES:
+Feature              Min                Max                Mean              
+--------------------------------------------------------------------------
+step                 1.00               743.00             243.40            
+amount               0.00               92,445,516.64      179,861.90        
+oldbalanceOrg        0.00               59,585,040.37      833,883.10        
+newbalanceOrig       0.00               49,585,040.37      855,113.67        
+oldbalanceDest       0.00               356,015,889.35     1,100,701.67      
+newbalanceDest       0.00               356,179,278.92     1,224,996.40      
+
+[6] KEY OBSERVATIONS & MODELING IMPLICATIONS:
+  1. Target Definition: 'isFraud' is the primary binary classification target (0=Legit, 1=Fraud).
+  2. Class Imbalance: Extremely rare positive class (~0.13% fraud). Accuracy is an invalid metric;
+     precision, recall, F1, PR-AUC, and ROC-AUC must be used.
+  3. Fraud Distribution: Fraud is exclusively concentrated in TRANSFER and CASH_OUT transactions.
+  4. Rule Inefficacy: 'isFlaggedFraud' misses the vast majority of actual frauds, demonstrating
+     the critical need for machine learning detection.
+  5. Missing Data: No missing/null values detected across any columns.
+  6. Balance Continuity: 'oldbalanceOrg', 'newbalanceOrig', 'oldbalanceDest', 'newbalanceDest'
+     can be used to engineer transaction discrepancy features (e.g., errorBalanceOrig, errorBalanceDest).
+================================================================================

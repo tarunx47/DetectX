@@ -1,0 +1,99 @@
+{
+  "best_model": "RandomForest",
+  "metrics": {
+    "model_name": "RandomForest",
+    "threshold": 0.5,
+    "precision": 0.1043639621192731,
+    "recall": 0.992696287279367,
+    "f1_score": 0.18887151873082045,
+    "pr_auc": 0.9254723645961919,
+    "roc_auc": 0.9995014684660386,
+    "accuracy": 0.9889911703040571,
+    "true_negatives": 1256884,
+    "false_positives": 13997,
+    "false_negatives": 12,
+    "true_positives": 1631,
+    "eval_time_sec": 4.090693235397339,
+    "fit_time_sec": 5.122958421707153
+  },
+  "feature_schema": {
+    "numeric": [
+      "step",
+      "amount",
+      "oldbalanceOrg",
+      "newbalanceOrig",
+      "oldbalanceDest",
+      "newbalanceDest"
+    ],
+    "categorical": [
+      "type"
+    ]
+  },
+  "all_model_results": [
+    {
+      "model_name": "DummyClassifier",
+      "threshold": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0,
+      "pr_auc": 0.0012911347840983745,
+      "roc_auc": 0.5,
+      "accuracy": 0.9987088652159016,
+      "true_negatives": 1270881,
+      "false_positives": 0,
+      "false_negatives": 1643,
+      "true_positives": 0,
+      "eval_time_sec": 0.448925256729126,
+      "fit_time_sec": 0.08816242218017578
+    },
+    {
+      "model_name": "LogisticRegression",
+      "threshold": 0.5,
+      "precision": 0.02305258177086414,
+      "recall": 0.9488740109555691,
+      "f1_score": 0.04501162102467122,
+      "pr_auc": 0.5904941044408862,
+      "roc_auc": 0.9898027187118392,
+      "accuracy": 0.9480143400045893,
+      "true_negatives": 1204812,
+      "false_positives": 66069,
+      "false_negatives": 84,
+      "true_positives": 1559,
+      "eval_time_sec": 0.506256103515625,
+      "fit_time_sec": 0.7067666053771973
+    },
+    {
+      "model_name": "DecisionTree",
+      "threshold": 0.5,
+      "precision": 0.14213331003756444,
+      "recall": 0.9902617163724894,
+      "f1_score": 0.24858670741023683,
+      "pr_auc": 0.6353902297652797,
+      "roc_auc": 0.9939935154553406,
+      "accuracy": 0.992270479770912,
+      "true_negatives": 1261061,
+      "false_positives": 9820,
+      "false_negatives": 16,
+      "true_positives": 1627,
+      "eval_time_sec": 0.5572810173034668,
+      "fit_time_sec": 0.9481549263000488
+    },
+    {
+      "model_name": "RandomForest",
+      "threshold": 0.5,
+      "precision": 0.1043639621192731,
+      "recall": 0.992696287279367,
+      "f1_score": 0.18887151873082045,
+      "pr_auc": 0.9254723645961919,
+      "roc_auc": 0.9995014684660386,
+      "accuracy": 0.9889911703040571,
+      "true_negatives": 1256884,
+      "false_positives": 13997,
+      "false_negatives": 12,
+      "true_positives": 1631,
+      "eval_time_sec": 4.090693235397339,
+      "fit_time_sec": 5.122958421707153
+    }
+  ],
+  "notes": "Trained on representative 20:1 train sample, evaluated on untouched natural test set."
+}

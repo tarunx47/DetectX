@@ -1,0 +1,43 @@
+==================================================================================
+                    DETECTX MODEL EVALUATION REPORT
+==================================================================================
+Timestamp: 2026-10-09 19:53:55
+Target Column: isFraud
+Test Set Size: 1,272,524 rows (Untouched Natural Prevalence: 0.1291% (1,643 frauds))
+Train Partition: 137,970 rows (All 6,570 frauds retained, legitimate sampled at 20:1 legitimate-to-fraud)
+----------------------------------------------------------------------------------
+
+[1] MODEL PERFORMANCE COMPARISON TABLE:
+Model                PR-AUC     F1-Score   Recall     Precision  ROC-AUC    Threshold 
+--------------------------------------------------------------------------------------
+DummyClassifier      0.0013     0.0000     0.0000     0.0000     0.5000     0.50      
+LogisticRegression   0.5905     0.0450     0.9489     0.0231     0.9898     0.50      
+DecisionTree         0.6354     0.2486     0.9903     0.1421     0.9940     0.50      
+RandomForest         0.9255     0.1889     0.9927     0.1044     0.9995     0.50      
+
+[2] CONFUSION MATRICES ON UNTOUCHED TEST SET:
+Model                True Neg (TN)   False Pos (FP)  False Neg (FN)  True Pos (TP)  
+--------------------------------------------------------------------------------
+DummyClassifier      1,270,881       0               1,643           0              
+LogisticRegression   1,204,812       66,069          84              1,559          
+DecisionTree         1,261,061       9,820           16              1,627          
+RandomForest         1,256,884       13,997          12              1,631          
+
+[3] EVALUATION METHODOLOGY & CRITICAL OBSERVATIONS:
+  - Metric Hierarchy: PR-AUC (Average Precision) and F1-score are the primary metrics
+    because positive fraud cases represent only ~0.13% of transactions. Accuracy is
+    intentionally de-emphasized because predicting all legitimate trivially achieves 99.87%.
+  - Test Set Integrity: The test set was stratified and kept strictly at natural class prevalence.
+    No resampling, threshold tuning, or model selection was conducted on test data.
+  - Baseline vs Learned Models: DummyClassifier achieves 0.00 recall and 0.00 F1.
+    Tree-based models (Random Forest, Decision Tree) significantly outperform linear models,
+    capturing non-linear interactions between transaction amounts and balance shifts.
+
+[4] DATASET & SIMULATION LIMITATIONS:
+  - IMPORTANT NOTE: This dataset is synthetic (PaySim agent-based simulator).
+  - In PaySim, fraud is exclusively programmed into TRANSFER and CASH_OUT transactions.
+    In real-world production banking, fraud attacks also manifest across payments, card-not-present,
+    merchant chargebacks, and automated clearing house (ACH) operations.
+  - Models trained on this dataset should NOT be considered production-ready without testing
+    against live, non-synthetic transaction telemetry.
+==================================================================================
