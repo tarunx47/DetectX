@@ -1,0 +1,45 @@
+{
+  "total_transactions": 6362620,
+  "actual_fraud": 8213,
+  "actual_legitimate": 6354407,
+  "predicted_fraud": 77872,
+  "predicted_legitimate": 6284748,
+  "true_positive": 8197,
+  "false_positive": 69675,
+  "true_negative": 6284732,
+  "false_negative": 16,
+  "by_type": {
+    "CASH_IN": {
+      "transactions": 1399284,
+      "actual_fraud": 0,
+      "predicted_fraud": 0
+    },
+    "CASH_OUT": {
+      "transactions": 2237500,
+      "actual_fraud": 4116,
+      "predicted_fraud": 73616
+    },
+    "DEBIT": {
+      "transactions": 41432,
+      "actual_fraud": 0,
+      "predicted_fraud": 0
+    },
+    "PAYMENT": {
+      "transactions": 2151495,
+      "actual_fraud": 0,
+      "predicted_fraud": 0
+    },
+    "TRANSFER": {
+      "transactions": 532909,
+      "actual_fraud": 4097,
+      "predicted_fraud": 4256
+    }
+  },
+  "actual_fraud_rate": 0.129,
+  "predicted_fraud_rate": 1.224,
+  "evaluation": {
+    "precision": 0.10526248202177933,
+    "recall": 0.9980518689881894,
+    "accuracy": 0.9890468077615825
+  }
+}
